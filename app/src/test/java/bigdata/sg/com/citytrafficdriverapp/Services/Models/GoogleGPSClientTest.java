@@ -1,8 +1,6 @@
 package bigdata.sg.com.citytrafficdriverapp.Services.Models;
 
 import android.content.Context;
-import android.location.Location;
-import android.os.Bundle;
 import android.test.mock.MockContext;
 
 import junit.framework.TestCase;
