@@ -23,9 +23,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 import static android.media.MediaRecorder.VideoSource.CAMERA;
 
-/**
- * Created by Oleksandr on 02.05.2017.
- */
+
 
 public class QrCodeScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
     public static final String TAG = "QrCodeScannerActivity";
@@ -86,6 +84,7 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
     @Override
     public void handleResult(Result result) {
         // TODO: 05.05.2017 add POST request
+//        mScannerView.getForeground()
         Log.v(TAG, result.getText());
         Log.v(TAG, result.getBarcodeFormat().toString());
         finish();
