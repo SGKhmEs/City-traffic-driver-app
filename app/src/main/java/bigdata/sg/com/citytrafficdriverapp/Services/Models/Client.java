@@ -1,9 +1,5 @@
 package bigdata.sg.com.citytrafficdriverapp.Services.Models;
 
-/**
- * Created by bonar on 5/2/2017.
- */
-
 public interface Client {
     void connect();
     void disconnect();

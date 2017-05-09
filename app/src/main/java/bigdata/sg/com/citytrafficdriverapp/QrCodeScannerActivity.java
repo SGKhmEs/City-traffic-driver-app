@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class QrCodeScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
