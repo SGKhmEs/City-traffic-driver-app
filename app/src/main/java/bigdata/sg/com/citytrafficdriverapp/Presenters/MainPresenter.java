@@ -70,7 +70,7 @@ public class MainPresenter implements View.OnClickListener{
     private void setServicesState(boolean state)
     {
         ServiceAlarmManager.setServiceAlarm(mActivity, ServiceAlarmManager.MINS_30, ServiceGPS.newIntent(mActivity), state);
-        ServiceAlarmManager.setServiceAlarm(mActivity, ServiceAlarmManager.MINS_1, QrScanService.newIntent(mActivity), state);
+        ServiceAlarmManager.setServiceAlarm(mActivity, ServiceAlarmManager.HOURS_2, QrScanService.newIntent(mActivity), state);
         if(!state)
         {
             mActivity.stopService(ServiceGPS.newIntent(mActivity));
