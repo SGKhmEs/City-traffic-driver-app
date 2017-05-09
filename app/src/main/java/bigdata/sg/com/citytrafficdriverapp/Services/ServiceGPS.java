@@ -13,10 +13,6 @@ import android.util.Log;
 import bigdata.sg.com.citytrafficdriverapp.Services.Models.Client;
 import bigdata.sg.com.citytrafficdriverapp.Services.Models.GoogleGPSClient;
 
-/**
- * Created by bonar on 5/1/2017.
- */
-
 public class ServiceGPS extends Service {
     private static final String TAG = "ServiceGPS";
 
