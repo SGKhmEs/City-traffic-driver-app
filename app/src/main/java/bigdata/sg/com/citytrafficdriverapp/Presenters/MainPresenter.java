@@ -1,7 +1,6 @@
 package bigdata.sg.com.citytrafficdriverapp.Presenters;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -12,10 +11,6 @@ import bigdata.sg.com.citytrafficdriverapp.R;
 import bigdata.sg.com.citytrafficdriverapp.ServiceAlarmManager;
 import bigdata.sg.com.citytrafficdriverapp.Services.QrScanService;
 import bigdata.sg.com.citytrafficdriverapp.Services.ServiceGPS;
-
-/**
- * Created by bonar on 5/8/2017.
- */
 
 public class MainPresenter implements View.OnClickListener{
     private static final String TAG = "MainPresenter";

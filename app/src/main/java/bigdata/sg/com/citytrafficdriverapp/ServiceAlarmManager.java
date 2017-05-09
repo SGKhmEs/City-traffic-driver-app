@@ -6,10 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 
-/**
- * Created by bonar on 5/9/2017.
- */
-
 public class ServiceAlarmManager {
     private static final String TAG = "ServiceAlarmManager";
 

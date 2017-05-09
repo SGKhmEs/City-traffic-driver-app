@@ -14,10 +14,6 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-/**
- * Created by bonar on 5/2/2017.
- */
-
 public class GoogleGPSClient implements Client {
     private static final String TAG = "GoogleGPSClient";
 
