@@ -19,7 +19,7 @@ public class AuthData {
     private String time;
 
     @Property
-    String qrValue;
+    private String qrValue;
 
     @Property
     private String picturePath;
