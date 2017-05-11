@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import bigdata.sg.com.citytrafficdriverapp.QrCodeScannerActivity;
+import bigdata.sg.com.citytrafficdriverapp.Activities.QrCodeScannerActivity;
 
 public class QrScanService extends IntentService {
     private static final String TAG = "QrScanService";

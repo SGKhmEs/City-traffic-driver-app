@@ -1,4 +1,4 @@
-package bigdata.sg.com.citytrafficdriverapp;
+package bigdata.sg.com.citytrafficdriverapp.Activities;
 
 import com.google.zxing.Result;
 

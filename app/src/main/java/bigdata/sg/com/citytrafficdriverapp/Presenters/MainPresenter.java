@@ -6,9 +6,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import bigdata.sg.com.citytrafficdriverapp.MainActivity;
+import bigdata.sg.com.citytrafficdriverapp.Activities.MainActivity;
 import bigdata.sg.com.citytrafficdriverapp.R;
-import bigdata.sg.com.citytrafficdriverapp.ServiceAlarmManager;
+import bigdata.sg.com.citytrafficdriverapp.Services.Helpers.ServiceAlarmManager;
 import bigdata.sg.com.citytrafficdriverapp.Services.QrScanService;
 import bigdata.sg.com.citytrafficdriverapp.Services.ServiceGPS;
 

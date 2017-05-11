@@ -1,10 +1,11 @@
-package bigdata.sg.com.citytrafficdriverapp;
+package bigdata.sg.com.citytrafficdriverapp.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
 import bigdata.sg.com.citytrafficdriverapp.Presenters.MainPresenter;
+import bigdata.sg.com.citytrafficdriverapp.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
