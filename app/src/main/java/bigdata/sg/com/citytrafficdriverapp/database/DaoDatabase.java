@@ -11,10 +11,6 @@ import bigdata.sg.com.citytrafficdriverapp.database.Entities.DaoSession;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.GpsData;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.GpsDataDao;
 
-/**
- * Created by bonar on 5/12/2017.
- */
-
 public class DaoDatabase implements IDatabase {
     private static final String TAG = "DaoDatabase";
 
