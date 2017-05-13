@@ -7,6 +7,7 @@ import org.greenrobot.greendao.database.Database;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.AuthData;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.AuthDataDao;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.DaoMaster;
+import bigdata.sg.com.citytrafficdriverapp.database.Entities.DaoMaster.DevOpenHelper;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.DaoSession;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.GpsData;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.GpsDataDao;
@@ -21,7 +22,7 @@ public class DaoDatabase implements IDatabase {
 
     public DaoDatabase(Context context) {
         mContext = context;
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(mContext, DB_NAME);
+        DevOpenHelper helper = new DevOpenHelper(mContext, DB_NAME);
         Database db = helper.getWritableDb();
         mDaoSession = new DaoMaster(db).newSession();
     }
