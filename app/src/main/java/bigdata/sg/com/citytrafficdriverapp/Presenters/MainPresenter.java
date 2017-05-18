@@ -4,13 +4,16 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 
 import bigdata.sg.com.citytrafficdriverapp.Activities.MainActivity;
+import bigdata.sg.com.citytrafficdriverapp.Config;
 import bigdata.sg.com.citytrafficdriverapp.R;
 import bigdata.sg.com.citytrafficdriverapp.Services.Helpers.ServiceAlarmManager;
 import bigdata.sg.com.citytrafficdriverapp.Services.QrScanService;
 import bigdata.sg.com.citytrafficdriverapp.Services.ServiceGPS;
+import bigdata.sg.com.citytrafficdriverapp.database.DaoDatabase;
 
 public class MainPresenter implements View.OnClickListener{
     private static final String TAG = "MainPresenter";
@@ -54,22 +57,28 @@ public class MainPresenter implements View.OnClickListener{
     {
         boolean state = getCurrentServiceState();
         mActivity.changeButtonState(state);
+
+        //TableGPS content
+        Log.d(TAG, new DaoDatabase(mActivity).getGpsRecords(0).toString());
     }
 
     private boolean getCurrentServiceState()
     {
         return  ServiceAlarmManager.isServiceAlarmOn(mActivity, ServiceGPS.newIntent(mActivity))
-                && ServiceAlarmManager.isServiceAlarmOn(mActivity, ServiceGPS.newIntent(mActivity));
+                && ServiceAlarmManager.isServiceAlarmOn(mActivity, QrScanService.newIntent(mActivity));
     }
 
     private void setServicesState(boolean state)
     {
-        ServiceAlarmManager.setServiceAlarm(mActivity, ServiceAlarmManager.MINS_30, ServiceGPS.newIntent(mActivity), state);
-        ServiceAlarmManager.setServiceAlarm(mActivity, ServiceAlarmManager.HOURS_2, QrScanService.newIntent(mActivity), state);
+        ServiceAlarmManager.setServiceAlarm(mActivity, Config.SERVICEGPS_WAKEUP_INTERVAL, ServiceGPS.newIntent(mActivity), state);
+        ServiceAlarmManager.setServiceAlarm(mActivity, Config.AUTH_INTERVAL, QrScanService.newIntent(mActivity), state);
         if(!state)
         {
             mActivity.stopService(ServiceGPS.newIntent(mActivity));
             mActivity.stopService(QrScanService.newIntent(mActivity));
+        } else {
+            mActivity.startService(ServiceGPS.newIntent(mActivity));
+            mActivity.startService(QrScanService.newIntent(mActivity));
         }
     }
 
