@@ -1,5 +1,7 @@
 package bigdata.sg.com.citytrafficdriverapp.database.Entities;
 
+import android.location.Location;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
@@ -20,7 +22,7 @@ public class GpsData {
     private String time;
 
     @Property
-    String qrValue;
+    private String qrValue;
 
     @Property
     private Double latitude;
@@ -30,6 +32,23 @@ public class GpsData {
     private Float speed;
     @Property
     private Float accuracy;
+
+    @Override
+    public String toString() {
+        String result = "[id: " + id + ", time: " + time + ", qrValue: " + qrValue +
+                ", latitude|longitude: " + latitude + "|" + longitude + ", speed: " + speed +
+                ", accuracy: " + accuracy;
+        return result;
+    }
+
+    public GpsData(Location location, String time, String qrValue) {
+        this.latitude = location.getLatitude();
+        this.longitude = location.getLongitude();
+        this.speed = location.getSpeed();
+        this.accuracy = location.getAccuracy();
+        this.time = time;
+        this.qrValue = qrValue;
+    }
 
     @Generated(hash = 1434002210)
     public GpsData(Long id, String time, String qrValue, Double latitude,
