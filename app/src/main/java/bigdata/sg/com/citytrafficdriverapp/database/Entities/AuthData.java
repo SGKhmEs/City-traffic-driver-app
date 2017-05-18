@@ -12,6 +12,9 @@ import org.greenrobot.greendao.annotation.Generated;
         }
 )
 public class AuthData {
+    public static final boolean LOGIN = true;
+    public static final boolean LOGOUT = false;
+
     @Id
     private Long id;
 
@@ -24,16 +27,36 @@ public class AuthData {
     @Property
     private String picturePath;
 
-    @Generated(hash = 112269877)
-    public AuthData(Long id, String time, String qrValue, String picturePath) {
+    @Property
+    private boolean login;
+
+    @Generated(hash = 106087593)
+    public AuthData() {
+    }
+
+    @Generated(hash = 2050152063)
+    public AuthData(Long id, String time, String qrValue, String picturePath,
+            boolean login) {
         this.id = id;
         this.time = time;
         this.qrValue = qrValue;
         this.picturePath = picturePath;
+        this.login = login;
     }
 
-    @Generated(hash = 106087593)
-    public AuthData() {
+    public AuthData(String time, String qrValue, String picturePath, boolean login) {
+        this.time = time;
+        this.qrValue = qrValue;
+        this.picturePath = picturePath;
+        this.login = login;
+    }
+
+    @Override
+    public String toString() {
+        return "Qr value: " + getQrValue()
+                + "  Time: " + getTime()
+                + "  Picture path: " + getPicturePath()
+                + "  Login: " + getLogin();
     }
 
     public Long getId() {
@@ -66,5 +89,13 @@ public class AuthData {
 
     public void setPicturePath(String picturePath) {
         this.picturePath = picturePath;
+    }
+
+    public boolean getLogin() {
+        return this.login;
+    }
+
+    public void setLogin(boolean login) {
+        this.login = login;
     }
 }
