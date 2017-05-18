@@ -42,6 +42,11 @@ public class DaoDatabase implements IDatabase {
         authDataDao.insert(authData);
     }
 
+    /**
+     * Get all record from GpsData table
+     * @param limit number of records to grab. If < 0 grabs all records
+     * @return
+     */
     public List<GpsData> getGpsRecords(int limit)
     {
         GpsDataDao gpsDataDao = mDaoSession.getGpsDataDao();
