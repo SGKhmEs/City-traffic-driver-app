@@ -59,4 +59,21 @@ public class DaoDatabase implements IDatabase {
         return qb.list();
     }
 
+    /**
+     * Get all record from AuthData table
+     * @param limit number of records to grab. If < 0 grabs all records
+     * @return
+     */
+    public List<AuthData> getAuthRecords(int limit)
+    {
+        AuthDataDao authDataDao = mDaoSession.getAuthDataDao();
+        QueryBuilder<AuthData> qb = authDataDao.queryBuilder()
+                .orderAsc(AuthDataDao.Properties.Time);
+
+        if(limit > 0)
+            qb.limit(limit);
+
+        return qb.list();
+    }
+
 }
