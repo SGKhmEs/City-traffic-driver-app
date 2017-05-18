@@ -9,18 +9,28 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import bigdata.sg.com.citytrafficdriverapp.App;
+import bigdata.sg.com.citytrafficdriverapp.Config;
+import bigdata.sg.com.citytrafficdriverapp.DataWriter;
+import bigdata.sg.com.citytrafficdriverapp.Utils.DateProvider;
+import bigdata.sg.com.citytrafficdriverapp.database.Entities.AuthData;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class QrCodeScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
     public static final String TAG = "QrCodeScannerActivity";
     private ZXingScannerView mScannerView;
+    private DataWriter mDataWriter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mScannerView = new ZXingScannerView(this);
         setContentView(mScannerView);
+        mDataWriter = ((App) getApplication()).getDataWriter();
+        unlockScreen();
+    }
 
+    private void unlockScreen(){
         KeyguardManager mKM = (KeyguardManager) getSystemService(this.KEYGUARD_SERVICE);
         KeyguardManager.KeyguardLock mKL = mKM.newKeyguardLock("");
         mKL.disableKeyguard();
@@ -49,8 +59,14 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
 
     @Override
     public void handleResult(Result result) {
-        Log.v(TAG, result.getText());
-        Log.v(TAG, result.getBarcodeFormat().toString());
+        Log.d(TAG, result.getText());
+        if (!result.getText().isEmpty()) {
+            String currentDate = DateProvider.getCurrentDate(Config.DATE_FORMAT);
+            AuthData authData = new AuthData(currentDate, result.getText(), null, AuthData.LOGIN);
+
+            mDataWriter.write(authData);
+        }
+
         finish();
     }
 }
