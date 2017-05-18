@@ -81,8 +81,6 @@ public class GoogleGPSClient implements Client {
                                 && ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION)
                                 != PackageManager.PERMISSION_GRANTED) {
 
-                            // TODO: request permission
-
                             Log.d(TAG, "No permission");
                             return;
                         }
