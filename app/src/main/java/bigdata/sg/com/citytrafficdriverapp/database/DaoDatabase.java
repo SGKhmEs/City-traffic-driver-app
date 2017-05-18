@@ -3,6 +3,9 @@ package bigdata.sg.com.citytrafficdriverapp.database;
 import android.content.Context;
 
 import org.greenrobot.greendao.database.Database;
+import org.greenrobot.greendao.query.QueryBuilder;
+
+import java.util.List;
 
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.AuthData;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.AuthDataDao;
@@ -37,6 +40,18 @@ public class DaoDatabase implements IDatabase {
     {
         AuthDataDao authDataDao = mDaoSession.getAuthDataDao();
         authDataDao.insert(authData);
+    }
+
+    public List<GpsData> getGpsRecords(int limit)
+    {
+        GpsDataDao gpsDataDao = mDaoSession.getGpsDataDao();
+        QueryBuilder<GpsData> qb = gpsDataDao.queryBuilder()
+                .orderAsc(GpsDataDao.Properties.Time);
+
+        if(limit > 0)
+            qb.limit(limit);
+
+        return qb.list();
     }
 
 }
