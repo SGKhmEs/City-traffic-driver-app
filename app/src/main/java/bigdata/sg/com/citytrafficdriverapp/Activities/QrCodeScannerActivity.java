@@ -49,7 +49,6 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
 
     @Override
     public void handleResult(Result result) {
-        // TODO: 05.05.2017 add POST request
         Log.v(TAG, result.getText());
         Log.v(TAG, result.getBarcodeFormat().toString());
         finish();
