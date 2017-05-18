@@ -60,6 +60,7 @@ public class MainPresenter implements View.OnClickListener{
 
         //TableGPS content
         Log.d(TAG, new DaoDatabase(mActivity).getGpsRecords(0).toString());
+        Log.d(TAG,"AUTH:  " +  new DaoDatabase(mActivity).getAuthRecords(0).toString());
     }
 
     private boolean getCurrentServiceState()
