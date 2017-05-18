@@ -8,12 +8,16 @@ import android.util.Log;
 import android.view.View;
 
 import bigdata.sg.com.citytrafficdriverapp.Activities.MainActivity;
+import bigdata.sg.com.citytrafficdriverapp.App;
 import bigdata.sg.com.citytrafficdriverapp.Config;
+import bigdata.sg.com.citytrafficdriverapp.QueryPreferences;
 import bigdata.sg.com.citytrafficdriverapp.R;
 import bigdata.sg.com.citytrafficdriverapp.Services.Helpers.ServiceAlarmManager;
 import bigdata.sg.com.citytrafficdriverapp.Services.QrScanService;
 import bigdata.sg.com.citytrafficdriverapp.Services.ServiceGPS;
+import bigdata.sg.com.citytrafficdriverapp.Utils.DateProvider;
 import bigdata.sg.com.citytrafficdriverapp.database.DaoDatabase;
+import bigdata.sg.com.citytrafficdriverapp.database.Entities.AuthData;
 
 public class MainPresenter implements View.OnClickListener{
     private static final String TAG = "MainPresenter";
@@ -46,6 +50,17 @@ public class MainPresenter implements View.OnClickListener{
         }
 
         boolean state = getCurrentServiceState();
+
+        if (state){
+            if(QueryPreferences.getQrValue(mActivity) != null) {
+                String currentDate = DateProvider.getCurrentDate(Config.DATE_FORMAT);
+                AuthData authData = new AuthData(currentDate, QueryPreferences.getQrValue(mActivity), null, AuthData.LOGOUT);
+                ((App) mActivity.getApplication()).getDataWriter().write(authData);
+                Log.d(TAG,"QR value:   " + QueryPreferences.getQrValue(mActivity));
+                QueryPreferences.setQrValue(mActivity, null);
+                Log.d(TAG,"QR value:   " + QueryPreferences.getQrValue(mActivity));
+            }
+        }
 
         setServicesState(!state);
 
