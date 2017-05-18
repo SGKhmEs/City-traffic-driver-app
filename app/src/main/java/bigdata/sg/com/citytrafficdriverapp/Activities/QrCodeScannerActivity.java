@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import bigdata.sg.com.citytrafficdriverapp.App;
 import bigdata.sg.com.citytrafficdriverapp.Config;
 import bigdata.sg.com.citytrafficdriverapp.DataWriter;
+import bigdata.sg.com.citytrafficdriverapp.QueryPreferences;
 import bigdata.sg.com.citytrafficdriverapp.Utils.DateProvider;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.AuthData;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -63,6 +64,8 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
         if (!result.getText().isEmpty()) {
             String currentDate = DateProvider.getCurrentDate(Config.DATE_FORMAT);
             AuthData authData = new AuthData(currentDate, result.getText(), null, AuthData.LOGIN);
+
+            QueryPreferences.setQrValue(this, result.getText());
 
             mDataWriter.write(authData);
         }
