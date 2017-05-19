@@ -42,4 +42,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     testCompile 'junit:junit:4.12'
     compile 'org.greenrobot:greendao:3.2.2'
+    compile 'org.greenrobot:eventbus:3.0.0'
 }
