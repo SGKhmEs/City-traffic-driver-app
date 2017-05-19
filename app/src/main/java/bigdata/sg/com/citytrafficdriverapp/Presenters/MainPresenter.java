@@ -10,6 +10,7 @@ import android.view.View;
 import bigdata.sg.com.citytrafficdriverapp.Activities.MainActivity;
 import bigdata.sg.com.citytrafficdriverapp.App;
 import bigdata.sg.com.citytrafficdriverapp.Config;
+import bigdata.sg.com.citytrafficdriverapp.Events.EventHelper;
 import bigdata.sg.com.citytrafficdriverapp.QueryPreferences;
 import bigdata.sg.com.citytrafficdriverapp.R;
 import bigdata.sg.com.citytrafficdriverapp.Services.Helpers.ServiceAlarmManager;
@@ -57,9 +58,11 @@ public class MainPresenter implements View.OnClickListener{
                 AuthData authData = new AuthData(currentDate, QueryPreferences.getQrValue(mActivity), null, AuthData.LOGOUT);
                 ((App) mActivity.getApplication()).getDataWriter().write(authData);
                 Log.d(TAG,"QR value:   " + QueryPreferences.getQrValue(mActivity));
-                QueryPreferences.setQrValue(mActivity, null);
-                Log.d(TAG,"QR value:   " + QueryPreferences.getQrValue(mActivity));
             }
+        } else {
+            QueryPreferences.setQrValue(mActivity, null);
+            Log.d(TAG,"QR value:   " + QueryPreferences.getQrValue(mActivity));
+            EventHelper.postAuthEvent(QueryPreferences.getQrValue(mActivity), AuthData.LOGOUT);
         }
 
         setServicesState(!state);
@@ -74,7 +77,7 @@ public class MainPresenter implements View.OnClickListener{
         mActivity.changeButtonState(state);
 
         //TableGPS content
-        Log.d(TAG, new DaoDatabase(mActivity).getGpsRecords(0).toString());
+        Log.d(TAG, "GPS" + new DaoDatabase(mActivity).getGpsRecords(0).toString());
         Log.d(TAG,"AUTH:  " +  new DaoDatabase(mActivity).getAuthRecords(0).toString());
     }
 
