@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import bigdata.sg.com.citytrafficdriverapp.App;
 import bigdata.sg.com.citytrafficdriverapp.Config;
 import bigdata.sg.com.citytrafficdriverapp.DataWriter;
+import bigdata.sg.com.citytrafficdriverapp.Events.EventHelper;
 import bigdata.sg.com.citytrafficdriverapp.QueryPreferences;
 import bigdata.sg.com.citytrafficdriverapp.Utils.DateProvider;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.AuthData;
@@ -68,6 +69,8 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
             QueryPreferences.setQrValue(this, result.getText());
 
             mDataWriter.write(authData);
+
+            EventHelper.postAuthEvent(result.getText(), AuthData.LOGIN);
         }
 
         finish();
