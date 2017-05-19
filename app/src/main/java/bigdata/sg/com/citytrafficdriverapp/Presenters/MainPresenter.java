@@ -52,17 +52,17 @@ public class MainPresenter implements View.OnClickListener{
 
         boolean state = getCurrentServiceState();
 
-        if (state){
+        if (state) {
             if(QueryPreferences.getQrValue(mActivity) != null) {
                 String currentDate = DateProvider.getCurrentDate(Config.DATE_FORMAT);
                 AuthData authData = new AuthData(currentDate, QueryPreferences.getQrValue(mActivity), null, AuthData.LOGOUT);
                 ((App) mActivity.getApplication()).getDataWriter().write(authData);
                 Log.d(TAG,"QR value:   " + QueryPreferences.getQrValue(mActivity));
+
+                QueryPreferences.setQrValue(mActivity, null);
+                Log.d(TAG,"QR value:   " + QueryPreferences.getQrValue(mActivity));
+                EventHelper.postAuthEvent(QueryPreferences.getQrValue(mActivity), AuthData.LOGOUT);
             }
-        } else {
-            QueryPreferences.setQrValue(mActivity, null);
-            Log.d(TAG,"QR value:   " + QueryPreferences.getQrValue(mActivity));
-            EventHelper.postAuthEvent(QueryPreferences.getQrValue(mActivity), AuthData.LOGOUT);
         }
 
         setServicesState(!state);
