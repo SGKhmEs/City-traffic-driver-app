@@ -75,11 +75,6 @@ public class MainPresenter implements View.OnClickListener{
     {
         boolean state = getCurrentServiceState();
         mActivity.changeButtonState(state);
-
-        //TableGPS content
-        //TODO Just for debugging. Delete before pushing to master.
-        Log.d(TAG, "GPS" + new DaoDatabase(mActivity).getGpsRecords(0).toString());
-        Log.d(TAG,"AUTH:  " +  new DaoDatabase(mActivity).getAuthRecords(0).toString());
     }
 
     private boolean getCurrentServiceState()
