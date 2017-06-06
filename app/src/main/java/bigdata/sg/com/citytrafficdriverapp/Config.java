@@ -9,4 +9,7 @@ public class Config {
 
     public static final long SERVICEGPS_WAKEUP_INTERVAL = ServiceAlarmManager.MINS_30;
     public static final long AUTH_INTERVAL = ServiceAlarmManager.HOURS_2;
+    public static final long SERVICE_SENDDB_INTERVAL = ServiceAlarmManager.MINS_30;
+
+    public static final int DB_PULL_LIMIT = 100;
 }
