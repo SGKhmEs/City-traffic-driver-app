@@ -34,6 +34,7 @@
 
         <service android:name="bigdata.sg.com.citytrafficdriverapp.Services.ServiceGPS"/>
         <service android:name=".Services.QrScanService"/>
+        <service android:name=".Services.ServiceSendDB"/>
 
     </application>
 
