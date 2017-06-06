@@ -76,4 +76,16 @@ public class DaoDatabase implements IDatabase {
         return qb.list();
     }
 
+    @Override
+    public void deleteGpsRecord(long id) {
+        GpsDataDao gpsDataDao = mDaoSession.getGpsDataDao();
+        gpsDataDao.deleteByKey(id);
+    }
+
+    @Override
+    public void deleteAuthRecord(long id) {
+        AuthDataDao authDataDao = mDaoSession.getAuthDataDao();
+        authDataDao.deleteByKey(id);
+    }
+
 }
