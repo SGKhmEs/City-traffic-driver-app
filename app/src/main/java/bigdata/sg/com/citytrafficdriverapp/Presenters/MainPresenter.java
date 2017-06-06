@@ -16,6 +16,7 @@ import bigdata.sg.com.citytrafficdriverapp.R;
 import bigdata.sg.com.citytrafficdriverapp.Services.Helpers.ServiceAlarmManager;
 import bigdata.sg.com.citytrafficdriverapp.Services.QrScanService;
 import bigdata.sg.com.citytrafficdriverapp.Services.ServiceGPS;
+import bigdata.sg.com.citytrafficdriverapp.Services.ServiceSendDB;
 import bigdata.sg.com.citytrafficdriverapp.Utils.DateProvider;
 import bigdata.sg.com.citytrafficdriverapp.database.DaoDatabase;
 import bigdata.sg.com.citytrafficdriverapp.database.Entities.AuthData;
@@ -30,6 +31,8 @@ public class MainPresenter implements View.OnClickListener{
     public MainPresenter(MainActivity mActivity)
     {
         this.mActivity = mActivity;
+
+        ServiceAlarmManager.setServiceAlarm(mActivity, Config.SERVICE_SENDDB_INTERVAL, ServiceSendDB.newIntent(mActivity), true);
     }
 
     @Override
