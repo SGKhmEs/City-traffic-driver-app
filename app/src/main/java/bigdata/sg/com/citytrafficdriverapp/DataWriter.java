@@ -6,4 +6,6 @@ import bigdata.sg.com.citytrafficdriverapp.database.Entities.GpsData;
 public interface DataWriter {
     void write(GpsData data);
     void write(AuthData data);
+    void pushGpsDB();
+    void pushAuthDB();
 }
